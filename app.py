@@ -16,20 +16,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SECRET_KEY'] = 'super_secret_key'
 db.init_app(app)
 
-# Create tables, feel free to comment out after running once, though no need:
-# with app.app_context():
-#     try:
-#         db.create_all()
-#         print("Tables created successfully.")
-#     except Exception as e:
-#         print(f"Error creating tables: {e}")
-
 
 @app.route('/')
 def index():
-    """Render a page with database contents + book cover images. I'm not sure
-     why we couldn't only fetch the cover image urls once and store
-    them in the DB, this is making the "rendering" much longer."""
     popup = get_flashed_messages(with_categories=True)
     rows = db.session.query(Book.title, Book.author_id, Book.isbn,
                             Book.book_id).all()

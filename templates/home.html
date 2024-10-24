@@ -14,13 +14,6 @@
     <nav class="menu">
       <form action="/" method="GET">
         <label for="sort_by_dropdown">sort by:</label>
-        <!--If the method were 'POST', the names of <select>s and <input>s would
-         become keys in kv pairs in the request body with value= attr content
-         as value of the kv pair.
-         But since the method is 'GET', name: value gets formatted into a query
-         string where ?name=value
-         Just...Wow.
-         -->
         <select id="sort_by_dropdown" name="sort">
           <option value="title">title</option>
           <option value="author">author</option>
